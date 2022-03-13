@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="grid-container">
+
+    <div>
+      <form id="add-item" class="panels">
+
+        <label for="shapes">Choose a shape:</label>
+        <select name="shapes" id="shapes" class="classic">
+          <option value="Plane">Plane</option>
+          <option value="Cube">Cube</option>
+          <option value="Pyramid">Pyramid</option>
+          <option value="Disc">Disc</option>
+          <option value="Cone">Cone</option>
+          <option value="Sphere">Sphere</option>
+        </select>
+        <br><br>
+        <h3>Input Coordinates</h3>
+        <div class="center">
+          <label for="lx">X:</label>
+          <input type="text" name="lx" id="lx" value="rand" onchange="MoveShapeX()" class="inputs" />
+          <label for="ly">Y:</label>
+          <input type="text" name="ly" id="ly" value="rand" onchange="MoveShapeY()" class="inputs" />
+          <label for="lz">Z:</label>
+          <input type="text" name="lz" id="lz" value="rand" class="inputs" />
+        </div>
+        <div class="slidecontainer">
+          Rotation: <input type="range" min="0" max="180" value="0" step="0.05" class="slider" id="rotateSL"
+            onclick="RotateShape()">
+        </div>
+        <div class="slidecontainer">
+          Scale: <input type="range" min="0.05" max="0.5" value="0.1" step="0.01" class="slider" id="scaleSL"
+            onclick="ScaleShape()">
+        </div>
+        <div class="center">
+          <button type="button" onclick="AddShape()">Add Shape</button>
+          <button type="button" onclick="SetDefault()">Default</button>
+        </div>
+      </form>
+      <form id="set-properties" class="panels">
+        <h3>Select Color</h3>
+        <div class="slidecontainer">
+          Red: <input type="range" min="0" max="1" value="1" step="0.05" class="slider" id="redSL" onchange="ChangeColor()" >
+
+          Green: <input type="range" min="0" max="1" value="0.3" step="0.05" class="slider" id="greenSL" onchange="ChangeColor()">
+
+          Blue: <input type="range" min="0" max="1" value="0.6" step="0.05" class="slider" id="blueSL" onchange="ChangeColor()">
+        </div>
+        <div class="center">
+          <button type="button" onclick="ChangeColor()">Change Color</button>
+        </div>
+      </form>
+      <form id="object-list">
+        <select multiple id="shapeList" size="8" class="shapeList"></select>
+        <div class="center">
+          <button type="button" onclick="RemoveShape()" id="btnAdd">Remove Shape</button>
+        </div>
+      </form>
+    </div>
+    <div>
+      <canvas id="glcanvas" width="800" height="800">
+        Please use a browser that supports "canvas"
+      </canvas>
+    </div>
+  </div>
+
+
+  <script src="webgl-utils.js"></script>
+  <script src="webgl-debug.js"></script>
+  <script src="cuon-utils.js"></script>
+  <script src="cuon-matrix.js"></script>
+  <script src="main.js"></script>
+</body>
+
+</html>
